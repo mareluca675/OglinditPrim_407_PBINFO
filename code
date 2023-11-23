@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+int Oglindit(int n)
+{
+    int ogl = 0;
+    
+    while(n > 0)
+    {
+        ogl = ogl * 10 + n % 10;
+        n = n / 10;
+    }
+    
+    return ogl;
+}
+
+int i, j, n, a, d, oglindit, copiea;
+long long s = 0;
+bool ok = 1;
+
+int main()
+{
+    cin >> n;
+    
+    for(i = 1; i <= n; i ++)
+    {
+        cin >> a;
+        
+        ok = 1;
+        copiea = a;
+        oglindit = Oglindit(a);
+        
+        for(d = 2; d * d <= oglindit; d ++)
+        {
+            if(oglindit % d == 0)
+            {
+                ok = 0;
+            }
+        }
+        
+        if(ok == 1)
+        {
+            s += copiea;
+        }
+    }
+    
+    cout << s;
+
+    return 0;
+}
